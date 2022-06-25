@@ -17,6 +17,7 @@ function ph_ajax_get_products_water_pump_buying_guide() {
       return [
         'ID' => $p->ID,
         'title' => $p->post_title,
+        'thumbnail' => get_the_post_thumbnail_url($p->ID),
         'buying_guide_enable' => get_field('buying_guide_enable', $p->ID),
         'shortname' => get_field('short_name_prd', $p->ID),
         'flow' => floatval(get_field('flow_attr_prd', $p->ID)),

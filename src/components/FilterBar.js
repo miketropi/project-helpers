@@ -35,18 +35,22 @@ const FilterBarContainer = styled.div`
     border: 1px solid #DBDBDB;
     border-radius: 4px;
     background: white;
+    overflow: hidden;
     
     &__item {
       list-style: none;
       display: flex;
       padding: 18px 14px;
       cursor: pointer;
+      transition: .3s ease;
 
       &:not(:last-child) {
         border-right: solid 1px #DBDBDB;
       }
 
       &.__active {
+        background: #F9FBFF;
+        box-shadow: inset 0px -5px 0px #0949d2;
 
         .__radio-face-ui {
           border-color: #ACC2F1;
@@ -85,7 +89,6 @@ export default ({ terms, totalProduct, onChange, defaultActive }) => {
   }
 
   return <FilterBarContainer>
-    {/* { JSON.stringify(terms) } */}
     <ul className="filter-list">
       <li 
         className={ ['filter-list__item', (active == 'all' ? '__active' : '')].join(' ') } 
