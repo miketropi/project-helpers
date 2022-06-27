@@ -14,17 +14,17 @@ const WaterPumpBuyingGuideContainerInner = styled.div`
   border: 1px solid #D2D9EC;
   box-shadow: 0px 1px 7px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
-  overflow: hidden;
   background: white;
 `
 
 export default () => {
-  const { products, terms, updateFilter, currentFilter } = useWPBG_Context();
+  const { products, terms, updateFilter, currentFilter, resultData } = useWPBG_Context();
   const onFilter = (value) => {
     updateFilter(value)
   }
 
   return <div id="WaterPumpBuyingGuideContainer" className="water-pump-buying-guide-container">
+    { JSON.stringify(resultData) }
     <WaterPumpBuyingGuideContainerInner>
       <FilterBar terms={ terms } totalProduct={ products.length } defaultActive={ currentFilter } onChange={ onFilter } />
       <FilterResult />

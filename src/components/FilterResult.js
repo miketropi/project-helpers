@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Board from './Board';
 import SwitchBoardUnit from './SwitchBoardUnit';
+import SwitchMode from './SwitchMode';
 
 const FilterResultContainer = styled.div`
   position: relative;
@@ -15,6 +16,7 @@ export default () => {
 
   return <FilterResultContainer>
     <SwitchBoardUnit />
+    <SwitchMode />
     <FilterResultContainerInner>
       <Board />
     </FilterResultContainerInner>
