@@ -2,9 +2,6 @@ import styled from 'styled-components';
 import { useWPBG_Context } from '../libs/context/WPBG_Context';
 
 const SwitchModeContainer = styled.div`
-  position: absolute;
-  top: 20px;
-  left: 52px;
   display: flex;
   padding: 4px;
   border-radius: 50px;

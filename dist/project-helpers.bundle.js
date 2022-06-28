@@ -3402,7 +3402,7 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 
-var FilterBarContainer = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  padding: 32px 48px;\n  box-sizing: border-box;\n  border-bottom: 1px solid #D2D9EC;\n  background: #fafbfe;\n\n  .__radio-face-ui {\n    display: inline-block;\n    width: 16px;\n    height: 16px;\n    border-radius: 16px;\n    border: 1px solid #CBCFD8;\n    margin-right: 10px;\n    margin-top: 2px;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n\n    &:after {\n      content: \"\";\n      width: 8px;\n      height: 8px;\n      border-radius: 10px;\n      background: white;\n    }\n  }\n\n  .filter-list {\n    margin: 0;\n    padding: 0;\n    display: flex;\n    border: 1px solid #DBDBDB;\n    border-radius: 4px;\n    background: white;\n    overflow: hidden;\n    \n    &__item {\n      list-style: none;\n      display: flex;\n      padding: 18px 14px;\n      cursor: pointer;\n      transition: .3s ease;\n\n      &:not(:last-child) {\n        border-right: solid 1px #DBDBDB;\n      }\n\n      &.__active {\n        background: #F9FBFF;\n        box-shadow: inset 0px -5px 0px #0949d2;\n\n        .__radio-face-ui {\n          border-color: #ACC2F1;\n\n          &:after {\n            background: #0949D2;\n          }\n        }\n      }\n    }\n\n    &__entry {\n      \n      label {\n        display: block;\n        font-weight: 800;\n        font-size: 16px;\n        color: #0F1729;\n        line-height: normal;\n      }\n\n      span {\n        font-size: 14px;\n        color: #505050;\n      }\n    }\n  }\n"])));
+var FilterBarContainer = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  padding: 32px 48px;\n  box-sizing: border-box;\n  border-bottom: 1px solid #D2D9EC;\n  background: #fafbfe;\n  border-radius: 4px 4px 0 0;\n\n  .__radio-face-ui {\n    display: inline-block;\n    width: 16px;\n    height: 16px;\n    border-radius: 16px;\n    border: 1px solid #CBCFD8;\n    margin-right: 10px;\n    margin-top: 2px;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n\n    &:after {\n      content: \"\";\n      width: 8px;\n      height: 8px;\n      border-radius: 10px;\n      background: white;\n    }\n  }\n\n  .filter-list {\n    margin: 0;\n    padding: 0;\n    display: flex;\n    border: 1px solid #DBDBDB;\n    border-radius: 4px;\n    background: white;\n    overflow: hidden;\n    \n    &__item {\n      list-style: none;\n      display: flex;\n      padding: 18px 14px;\n      cursor: pointer;\n      transition: .3s ease;\n\n      &:not(:last-child) {\n        border-right: solid 1px #DBDBDB;\n      }\n\n      &.__active {\n        background: #F9FBFF;\n        box-shadow: inset 0px -5px 0px #0949d2;\n\n        .__radio-face-ui {\n          border-color: #ACC2F1;\n\n          &:after {\n            background: #0949D2;\n          }\n        }\n      }\n    }\n\n    &__entry {\n      \n      label {\n        display: block;\n        font-weight: 800;\n        font-size: 16px;\n        color: #0F1729;\n        line-height: normal;\n      }\n\n      span {\n        font-size: 14px;\n        color: #505050;\n      }\n    }\n  }\n"])));
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function (_ref) {
   var terms = _ref.terms,
       totalProduct = _ref.totalProduct,
@@ -3480,12 +3480,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _Board__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Board */ "./src/components/Board.js");
 /* harmony import */ var _SwitchBoardUnit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SwitchBoardUnit */ "./src/components/SwitchBoardUnit.js");
 /* harmony import */ var _SwitchMode__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SwitchMode */ "./src/components/SwitchMode.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-var _templateObject, _templateObject2;
+/* harmony import */ var _libs_context_WPBG_Context__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../libs/context/WPBG_Context */ "./src/libs/context/WPBG_Context.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+var _templateObject, _templateObject2, _templateObject3, _templateObject4;
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
@@ -3496,12 +3497,28 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 
-var FilterResultContainer = styled_components__WEBPACK_IMPORTED_MODULE_5__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  position: relative;\n"])));
-var FilterResultContainerInner = styled_components__WEBPACK_IMPORTED_MODULE_5__["default"].div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  padding: 0 48px;\n"])));
+
+var FilterResultContainer = styled_components__WEBPACK_IMPORTED_MODULE_6__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  position: relative;\n"])));
+var FilterResultContainerInner = styled_components__WEBPACK_IMPORTED_MODULE_6__["default"].div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  padding: 0 48px;\n"])));
+var AdminTools = styled_components__WEBPACK_IMPORTED_MODULE_6__["default"].div(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n  position: absolute;\n  top: 20px;\n  left: 52px;\n  z-index: 40;\n  display: flex;\n  align-items: center;\n"])));
+var ButtonSave = styled_components__WEBPACK_IMPORTED_MODULE_6__["default"].button(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n  margin-left: 4px;\n  height: 41px;\n  line-height: normal;\n  border-radius: 40px;\n  padding: 0 20px;\n  font-size: 12px;\n  font-weight: 600;\n\n  ", "\n"])), function (props) {
+  return props.isLoading ? "\n  opacity: .5;\n  pointer-events: none;\n  background: gray;\n  border-color: gray;\n  " : "";
+});
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function () {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(FilterResultContainer, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_SwitchBoardUnit__WEBPACK_IMPORTED_MODULE_2__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_SwitchMode__WEBPACK_IMPORTED_MODULE_3__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(FilterResultContainerInner, {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Board__WEBPACK_IMPORTED_MODULE_1__["default"], {})
+  var _useWPBG_Context = (0,_libs_context_WPBG_Context__WEBPACK_IMPORTED_MODULE_4__.useWPBG_Context)(),
+      onSave = _useWPBG_Context.onSave,
+      loading = _useWPBG_Context.loading,
+      admin_logged_in = _useWPBG_Context.admin_logged_in;
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(FilterResultContainer, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_SwitchBoardUnit__WEBPACK_IMPORTED_MODULE_2__["default"], {}), admin_logged_in == 1 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(AdminTools, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_SwitchMode__WEBPACK_IMPORTED_MODULE_3__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(ButtonSave, {
+        onClick: onSave,
+        isLoading: loading,
+        children: loading ? 'Saving...' : 'Save'
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(FilterResultContainerInner, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Board__WEBPACK_IMPORTED_MODULE_1__["default"], {})
     })]
   });
 });
@@ -3521,12 +3538,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _PopoverProductsSelect__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PopoverProductsSelect */ "./src/components/PopoverProductsSelect.js");
 /* harmony import */ var _ActionsPerRow__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ActionsPerRow */ "./src/components/ActionsPerRow.js");
 /* harmony import */ var _libs_context_WPBG_Context__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../libs/context/WPBG_Context */ "./src/libs/context/WPBG_Context.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-var _templateObject, _templateObject2, _templateObject3, _templateObject4;
+/* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! uuid */ "./node_modules/uuid/dist/esm-browser/v4.js");
+/* harmony import */ var _PopoverProductConfig__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./PopoverProductConfig */ "./src/components/PopoverProductConfig.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5;
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -3556,29 +3575,49 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 
-var ItemsContainer = styled_components__WEBPACK_IMPORTED_MODULE_5__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  width: 100%;\n\n  .__edit {\n    \n    .row-inner {\n      border: solid #eee;\n      border-width: 1px 0;\n    }\n  }\n"])));
-var RowContainer = styled_components__WEBPACK_IMPORTED_MODULE_5__["default"].div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  width: 100%;\n  margin-bottom: 10px;\n\n  .row-inner {\n    padding: 10px 0;\n    display: flex;\n    position: relative;\n  }\n\n  .__actions {\n    display: none;\n  }\n\n  &:hover {\n\n    .__actions {\n      display: block;\n    }\n  }\n"])));
-var ButtonAdd = styled_components__WEBPACK_IMPORTED_MODULE_5__["default"].button(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n  font-size: 13px;\n  border-radius: 2px;\n  width: 24px;\n  height: 24px;\n  min-width: auto;\n  padding: 0;\n  margin: 0;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  line-height: 0;\n"])));
-var ProductItemContainer = styled_components__WEBPACK_IMPORTED_MODULE_5__["default"].div(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n  display: flex;\n  align-items: center;\n  padding: 4px 20px 4px 4px;\n  border-radius: 100px;\n  background: white;\n  border: solid 1px #eee;\n  min-width: 170px;\n\n  .thumb {\n    width: auto;\n    height: 48px;\n    border-radius: 48px;\n    margin-right: 8px;\n  }\n\n  .__entry {\n\n    h4 {\n      font-size: 14px;\n      font-weight: bold;\n      margin-bottom: 4px;\n      line-height: normal;\n    }\n\n    p {\n      font-size: 12px;\n      font-weight: normal;\n      margin: 0;\n      line-height: normal;\n    }\n  }\n"])));
+
+var ItemsContainer = styled_components__WEBPACK_IMPORTED_MODULE_6__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  width: 100%;\n\n  .__edit {\n    \n    .row-inner {\n      padding: 10px 0;\n      border: solid #eee;\n      border-width: 1px 0;\n      background: -moz-linear-gradient(left,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.1) 49%, rgba(0,0,0,0) 100%); /* FF3.6-15 */\n      background: -webkit-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.1) 49%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */\n      background: linear-gradient(to right,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.1) 49%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */\n      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */\n    }\n  }\n"])));
+var RowContainer = styled_components__WEBPACK_IMPORTED_MODULE_6__["default"].div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  width: 100%;\n  margin-bottom: 10px;\n\n  .row-inner {\n    display: flex;\n    position: relative;\n  }\n\n  .__actions {\n    display: none;\n  }\n\n  &:hover {\n\n    .__actions {\n      display: block;\n    }\n  }\n"])));
+var ButtonAdd = styled_components__WEBPACK_IMPORTED_MODULE_6__["default"].button(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n  font-size: 13px;\n  border-radius: 2px;\n  width: 24px;\n  height: 24px;\n  min-width: auto;\n  padding: 0;\n  margin: 0;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  line-height: 0;\n"])));
+var ProductItemContainer = styled_components__WEBPACK_IMPORTED_MODULE_6__["default"].div(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n  display: flex;\n  align-items: center;\n  padding: 4px 20px 4px 4px;\n  border-radius: 100px;\n  \n  min-width: 170px;\n  margin-left: ", ";\n  filter: ", ";\n  opacity: ", ";\n  transition: opacity .3s ease;\n\n  ", "\n\n  .thumb {\n    width: auto;\n    height: 48px;\n    border-radius: 48px;\n    margin-right: 8px;\n  }\n\n  .__entry {\n\n    h4 {\n      font-size: 14px;\n      font-weight: bold;\n      margin-bottom: 4px;\n      line-height: normal;\n      white-space: nowrap;\n    }\n\n    p {\n      font-size: 12px;\n      font-weight: normal;\n      margin: 0;\n      line-height: normal;\n      white-space: nowrap;\n    }\n  }\n"])), function (props) {
+  return props.space ? "".concat(props.space, "px") : '0px';
+}, function (props) {
+  return props.disableUI ? 'grayscale(1)' : 'none';
+}, function (props) {
+  return props.disableUI ? '.3' : '1';
+}, function (props) {
+  return props.filterActive ? "\n  background: #F1F5FF;\n  border: 1px solid #195ff5;\n  " : "\n  background: white;\n  border: solid 1px #E9E9E9;\n  ";
+});
+var AddItemAfterContainer = styled_components__WEBPACK_IMPORTED_MODULE_6__["default"].div(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n  position: absolute;\n  right: 0;\n  top: -27px;\n  transform: translateX(50%);\n  opacity: .4;\n  z-index: 9;\n\n  &:hover {\n    opacity: 1;\n  }\n"])));
 
 var ProductItem = function ProductItem(_ref) {
-  var product = _ref.product;
+  var product = _ref.product,
+      space = _ref.space;
 
   var _useWPBG_Context = (0,_libs_context_WPBG_Context__WEBPACK_IMPORTED_MODULE_3__.useWPBG_Context)(),
-      unitActive = _useWPBG_Context.unitActive;
+      unitActive = _useWPBG_Context.unitActive,
+      currentFilter = _useWPBG_Context.currentFilter;
 
   var unitText = unitActive == 'flow' ? "".concat(product.flow, "L/min") : "".concat(product.pressure, "kPa"); // let unitText = product.pressure
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(ProductItemContainer, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
+  var findTerm = product.term.filter(function (t) {
+    return t.slug == currentFilter;
+  });
+  var disableUI = currentFilter == 'all' ? false : findTerm.length > 0 ? false : true;
+  var filterActive = currentFilter == 'all' ? false : true;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(ProductItemContainer, {
+    space: space,
+    disableUI: disableUI,
+    filterActive: filterActive,
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
       className: "thumb",
       src: product.thumbnail,
       alt: "#".concat(product.shortname)
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
       className: "__entry",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h4", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h4", {
         children: product.shortname
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
         children: unitText
       })]
     })]
@@ -3599,6 +3638,10 @@ var ProductItem = function ProductItem(_ref) {
       _data = _useState2[0],
       set_Data = _useState2[1];
 
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    set_Data(_objectSpread({}, data));
+  }, [data]);
+
   var onAdd = function onAdd(ID, rowIndex, pos) {
     var newData = _objectSpread({}, _data);
 
@@ -3606,6 +3649,7 @@ var ProductItem = function ProductItem(_ref) {
       return p.ID == ID;
     });
     newData[unitActive][rowIndex].items.splice(pos, 0, {
+      _id: (0,uuid__WEBPACK_IMPORTED_MODULE_7__["default"])(),
       product: _objectSpread({}, find),
       space: 0
     });
@@ -3616,12 +3660,12 @@ var ProductItem = function ProductItem(_ref) {
   var onAddRow = function onAddRow(rowIndex) {
     var newData = _objectSpread({}, _data);
 
-    console.log(newData, rowIndex); // newData[unitActive].splice(rowIndex + 1, 0, {
-    //   _id: uuidv4(),
-    //   items: []
-    // })
-    // set_Data(newData);
-    // onChange(newData);
+    newData[unitActive].splice(rowIndex + 1, 0, {
+      _id: (0,uuid__WEBPACK_IMPORTED_MODULE_7__["default"])(),
+      items: []
+    });
+    set_Data(newData);
+    onChange(newData);
   };
 
   var onRemoveRow = function onRemoveRow(rowIndex) {
@@ -3635,16 +3679,36 @@ var ProductItem = function ProductItem(_ref) {
     onChange(newData);
   };
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(ItemsContainer, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+  var onUpdateItemProduct = function onUpdateItemProduct(values, _rowIndex, _itemIndex) {
+    var newData = _objectSpread({}, _data);
+
+    newData[unitActive][_rowIndex].items[_itemIndex] = values;
+    set_Data(newData);
+    onChange(newData);
+  };
+
+  var onRemoveItemProduct = function onRemoveItemProduct(_rowIndex, _itemIndex) {
+    var r = confirm("Are you sure you want to remove this item?");
+    if (r != true) return;
+
+    var newData = _objectSpread({}, _data);
+
+    newData[unitActive][_rowIndex].items.splice(_itemIndex, 1);
+
+    set_Data(newData);
+    onChange(newData);
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(ItemsContainer, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
       className: ['items-conatiner__inner', mode == 'edit' ? '__edit' : '__preview'].join(' '),
-      children: [JSON.stringify(_data), unitActive, _data[unitActive].map(function (row, _index) {
+      children: _data[unitActive].map(function (row, _rowIndex) {
         var _id = row._id,
             items = row.items;
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(RowContainer, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(RowContainer, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
             className: "row-inner",
-            children: [mode == 'edit' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+            children: [mode == 'edit' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
               style: {
                 display: 'flex',
                 alignItems: 'center',
@@ -3652,42 +3716,179 @@ var ProductItem = function ProductItem(_ref) {
                 marginRight: '4px',
                 marginLeft: '-28px'
               },
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_PopoverProductsSelect__WEBPACK_IMPORTED_MODULE_1__["default"], {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_PopoverProductsSelect__WEBPACK_IMPORTED_MODULE_1__["default"], {
                 products: products,
                 onSelect: function onSelect(value) {
-                  onAdd(value, _index, 0);
+                  onAdd(value, _rowIndex, 0);
                 },
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(ButtonAdd, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(ButtonAdd, {
                   children: "+"
                 })
               })
             }), // JSON.stringify(items)
-            items.length > 0 && items.map(function (item) {
+            items.length > 0 && items.map(function (item, _productIndex) {
               var product = item.product,
-                  space = item.space;
-              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(ProductItem, {
+                  space = item.space,
+                  _id = item._id;
+              return mode == 'edit' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_PopoverProductConfig__WEBPACK_IMPORTED_MODULE_4__["default"], {
+                data: item,
+                onChange: function onChange(value) {
+                  onUpdateItemProduct(value, _rowIndex, _productIndex);
+                },
+                onRemove: function onRemove() {
+                  onRemoveItemProduct(_rowIndex, _productIndex);
+                },
+                extra: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(AddItemAfterContainer, {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_PopoverProductsSelect__WEBPACK_IMPORTED_MODULE_1__["default"], {
+                    products: products,
+                    onSelect: function onSelect(value) {
+                      onAdd(value, _rowIndex, _productIndex + 1);
+                    },
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(ButtonAdd, {
+                      children: "+"
+                    })
+                  })
+                }),
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(ProductItem, {
+                  product: product,
+                  space: space
+                }, _id)
+              }, "config_".concat(_id)) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(ProductItem, {
                 product: product,
                 space: space
-              }, product.ID);
-            }), mode == 'edit' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+              }, _id);
+            }), mode == 'edit' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
               className: "__actions",
-              children: [_index == 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_ActionsPerRow__WEBPACK_IMPORTED_MODULE_2__["default"], {
+              children: [_rowIndex == 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_ActionsPerRow__WEBPACK_IMPORTED_MODULE_2__["default"], {
                 onAdd: function onAdd(e) {
-                  onAddRow(_index);
+                  onAddRow(_rowIndex);
                 }
-              }), _index > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_ActionsPerRow__WEBPACK_IMPORTED_MODULE_2__["default"], {
+              }), _rowIndex > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_ActionsPerRow__WEBPACK_IMPORTED_MODULE_2__["default"], {
                 onAdd: function onAdd(e) {
-                  onAddRow(_index);
+                  onAddRow(_rowIndex);
                 },
                 onRemove: function onRemove(e) {
-                  onRemoveRow(_index);
+                  onRemoveRow(_rowIndex);
                 }
               })]
             })]
           })
         }, _id);
-      })]
+      })
     })
+  });
+});
+
+/***/ }),
+
+/***/ "./src/components/PopoverProductConfig.js":
+/*!************************************************!*\
+  !*** ./src/components/PopoverProductConfig.js ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _libs_useOuterClick__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../libs/useOuterClick */ "./src/libs/useOuterClick.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+var _templateObject, _templateObject2;
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
+
+
+
+
+var PopoverProductConfigContainer = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  position: relative;\n"])));
+var ConfigContainer = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  position: absolute;\n  left: 0; \n  top: calc(100% + 4px);\n  width: 240px;\n  padding: 10px;\n  background: white;\n  z-index: 9;\n  border: solid 1px #eee;\n  border-radius: 4px;\n  display: ", ";\n  font-size: 11px;\n  font-weight: 600;\n  box-shadow: 1px 1px 2px 1px rgb(1 1 1 / 5%);\n\n  h4 {\n    font-size: 11px;\n    line-height: 1.5em;\n    margin-bottom: 1em;\n    font-weight: bold;\n    color: black;\n  }\n\n  button {\n    font-size: 11px;\n    padding: 8px 10px;\n    line-height: normal;\n    float: right;\n    background: black;\n    border: none;\n  }\n\n  fieldset {\n    padding: 4px 10px;\n\n    legend {\n      margin: 0;\n      font-size: 10px;\n      color: black;\n      text-transform: uppercase;\n    }\n  }\n"])), function (props) {
+  return props.show ? 'block' : 'none';
+});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function (_ref) {
+  var data = _ref.data,
+      children = _ref.children,
+      onChange = _ref.onChange,
+      onRemove = _ref.onRemove,
+      extra = _ref.extra;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      show = _useState2[0],
+      setShow = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(data.space),
+      _useState4 = _slicedToArray(_useState3, 2),
+      space = _useState4[0],
+      setSpace = _useState4[1];
+
+  var innerRef = (0,_libs_useOuterClick__WEBPACK_IMPORTED_MODULE_1__["default"])(function (ev) {
+    setShow(false);
+  });
+
+  var _onChange = function _onChange(e) {
+    var newData = _objectSpread({}, data);
+
+    newData.space = e.target.value;
+    setSpace(e.target.value);
+    onChange(newData);
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(PopoverProductConfigContainer, {
+    ref: innerRef,
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      onClick: function onClick(e) {
+        return setShow(!show);
+      },
+      style: {
+        cursor: 'pointer'
+      },
+      children: children
+    }), extra, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(ConfigContainer, {
+      show: show,
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("h4", {
+        children: [data.product.shortname, " (#", data.product.ID, ")"]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("fieldset", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("legend", {
+          children: ["Left Space (", space, ")"]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+          type: "range",
+          min: "0",
+          max: "1300",
+          step: "1",
+          className: "input-slider",
+          value: space,
+          onChange: _onChange
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("hr", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+        className: "btn",
+        onClick: onRemove,
+        children: "Remove"
+      })]
+    })]
   });
 });
 
@@ -3706,8 +3907,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _libs_useOuterClick__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../libs/useOuterClick */ "./src/libs/useOuterClick.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 var _templateObject, _templateObject2;
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -3728,8 +3930,9 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 
-var PopoverProductsSelectContainer = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  display: inline-block;\n  position: relative;\n"])));
-var SelectContainer = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  background: white;\n  border-radius: 3px;\n  overflow: hidden;\n  position: absolute;\n  z-index: 9;\n  top: calc(100% + 5px);\n  min-width: 180px;\n  z-index: 9;\n  border: solid 1px #eee;\n  box-shadown: 3px 3px 4px -1px rgb(1 1 1 / 5%);\n  display: ", ";\n\n  ul {\n    margin: 0;\n    padding: 0;\n    max-height: 300px;\n    overflow: auto;\n\n    li {\n      list-style: none;\n      padding: 6px 10px;\n      font-size: 11px;\n      font-weight: 600;\n      line-height: 1.5em;\n      cursor: pointer;\n\n      &:hover {\n        background: #1d68f5;\n        color: white;\n      }\n\n      &:not(:last-child) {\n        border-bottom: 1px solid #eee;\n      }\n    }\n  }\n"])), function (props) {
+
+var PopoverProductsSelectContainer = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  display: inline-block;\n  position: relative;\n"])));
+var SelectContainer = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  background: white;\n  border-radius: 3px;\n  overflow: hidden;\n  position: absolute;\n  z-index: 9;\n  top: calc(100% + 5px);\n  min-width: 180px;\n  z-index: 9;\n  border: solid 1px #eee;\n  box-shadown: 3px 3px 4px -1px rgb(1 1 1 / 5%);\n  display: ", ";\n\n  ul {\n    margin: 0;\n    padding: 0;\n    max-height: 300px;\n    overflow: auto;\n\n    li {\n      list-style: none;\n      padding: 6px 10px;\n      font-size: 11px;\n      font-weight: 600;\n      line-height: 1.5em;\n      cursor: pointer;\n\n      &:hover {\n        background: #1d68f5;\n        color: white;\n      }\n\n      &:not(:last-child) {\n        border-bottom: 1px solid #eee;\n      }\n    }\n  }\n"])), function (props) {
   return props.status == true ? 'block' : 'none';
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function (_ref) {
@@ -3742,6 +3945,10 @@ var SelectContainer = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].
       show = _useState2[0],
       setShow = _useState2[1];
 
+  var innerRef = (0,_libs_useOuterClick__WEBPACK_IMPORTED_MODULE_1__["default"])(function (ev) {
+    setShow(false);
+  });
+
   var updateShow = function updateShow(e) {
     e.preventDefault();
     e.stopPropagation();
@@ -3753,15 +3960,16 @@ var SelectContainer = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].
     onSelect(value);
   };
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(PopoverProductsSelectContainer, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(PopoverProductsSelectContainer, {
+    ref: innerRef,
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
       onClick: updateShow,
       children: children
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(SelectContainer, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(SelectContainer, {
       status: show,
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("ul", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("ul", {
         children: products.length > 0 && products.map(function (p) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("li", {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {
             onClick: function onClick(e) {
               _onSelect(p.ID);
             },
@@ -3846,7 +4054,7 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 
-var SwitchModeContainer = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  position: absolute;\n  top: 20px;\n  left: 52px;\n  display: flex;\n  padding: 4px;\n  border-radius: 50px;\n  border: 1px solid #DBDBDB; \n  z-index: 9;\n\n  button {\n    width: 65px;\n    background: white;\n    height: 31px;\n    text-align: center;\n    border-radius: 30px;\n    border: none;\n    font-size: 12px;\n    font-weight: 500;\n    padding: 0;\n    color: #505050;\n    line-height: normal;\n    transition: .3s ease;\n\n    &.__active {\n      background: black;\n      color: white;\n    }\n  }\n"])));
+var SwitchModeContainer = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  display: flex;\n  padding: 4px;\n  border-radius: 50px;\n  border: 1px solid #DBDBDB; \n  z-index: 9;\n\n  button {\n    width: 65px;\n    background: white;\n    height: 31px;\n    text-align: center;\n    border-radius: 30px;\n    border: none;\n    font-size: 12px;\n    font-weight: 500;\n    padding: 0;\n    color: #505050;\n    line-height: normal;\n    transition: .3s ease;\n\n    &.__active {\n      background: black;\n      color: white;\n    }\n  }\n"])));
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function () {
   var _useWPBG_Context = (0,_libs_context_WPBG_Context__WEBPACK_IMPORTED_MODULE_0__.useWPBG_Context)(),
       modeEdit = _useWPBG_Context.modeEdit,
@@ -3969,17 +4177,17 @@ var WaterPumpBuyingGuideContainerInner = styled_components__WEBPACK_IMPORTED_MOD
     updateFilter(value);
   };
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
     id: "WaterPumpBuyingGuideContainer",
     className: "water-pump-buying-guide-container",
-    children: [JSON.stringify(resultData), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(WaterPumpBuyingGuideContainerInner, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(WaterPumpBuyingGuideContainerInner, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_FilterBar__WEBPACK_IMPORTED_MODULE_2__["default"], {
         terms: terms,
         totalProduct: products.length,
         defaultActive: currentFilter,
         onChange: onFilter
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_FilterResult__WEBPACK_IMPORTED_MODULE_3__["default"], {})]
-    })]
+    })
   });
 });
 
@@ -3995,7 +4203,8 @@ var WaterPumpBuyingGuideContainerInner = styled_components__WEBPACK_IMPORTED_MOD
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "get_products_water_pump_buying_guide": () => (/* binding */ get_products_water_pump_buying_guide),
-/* harmony export */   "request": () => (/* binding */ request)
+/* harmony export */   "request": () => (/* binding */ request),
+/* harmony export */   "save": () => (/* binding */ save)
 /* harmony export */ });
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
@@ -4039,14 +4248,15 @@ var request = /*#__PURE__*/function () {
   };
 }();
 var get_products_water_pump_buying_guide = /*#__PURE__*/function () {
-  var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(terms) {
+  var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(terms, nameOption) {
     return _regeneratorRuntime().wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
             _context2.next = 2;
             return request('ph_ajax_get_products_water_pump_buying_guide', {
-              terms: terms
+              terms: terms,
+              nameOption: nameOption
             });
 
           case 2:
@@ -4060,8 +4270,35 @@ var get_products_water_pump_buying_guide = /*#__PURE__*/function () {
     }, _callee2);
   }));
 
-  return function get_products_water_pump_buying_guide(_x3) {
+  return function get_products_water_pump_buying_guide(_x3, _x4) {
     return _ref2.apply(this, arguments);
+  };
+}();
+var save = /*#__PURE__*/function () {
+  var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(data, nameOption) {
+    return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            _context3.next = 2;
+            return request('ph_ajax_save_products_water_pump_buying_guide', {
+              data: data,
+              nameOption: nameOption
+            });
+
+          case 2:
+            return _context3.abrupt("return", _context3.sent);
+
+          case 3:
+          case "end":
+            return _context3.stop();
+        }
+      }
+    }, _callee3);
+  }));
+
+  return function save(_x5, _x6) {
+    return _ref3.apply(this, arguments);
   };
 }();
 
@@ -4146,7 +4383,8 @@ var RESULT_BOARD_DATA_INIT = {
 
 var WPBG_Provider = function WPBG_Provider(_ref) {
   var children = _ref.children,
-      product_cats = _ref.product_cats;
+      product_cats = _ref.product_cats,
+      name_option = _ref.name_option;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('preview'),
       _useState2 = _slicedToArray(_useState, 2),
@@ -4183,6 +4421,11 @@ var WPBG_Provider = function WPBG_Provider(_ref) {
       resultData = _useState14[0],
       setResultData = _useState14[1];
 
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState16 = _slicedToArray(_useState15, 2),
+      loading = _useState16[0],
+      setLoading = _useState16[1];
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var _getProducts = /*#__PURE__*/function () {
       var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
@@ -4193,7 +4436,7 @@ var WPBG_Provider = function WPBG_Provider(_ref) {
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return (0,_api__WEBPACK_IMPORTED_MODULE_1__.get_products_water_pump_buying_guide)(product_cats.split(','));
+                return (0,_api__WEBPACK_IMPORTED_MODULE_1__.get_products_water_pump_buying_guide)(product_cats.split(','), name_option);
 
               case 2:
                 _yield$get_products_w = _context.sent;
@@ -4201,7 +4444,11 @@ var WPBG_Provider = function WPBG_Provider(_ref) {
                 setProducts(_toConsumableArray(data.products));
                 setTerms(_toConsumableArray(data.filter_terms));
 
-              case 6:
+                if (data.data) {
+                  setResultData(data.data); // 🍌🍌🍌
+                }
+
+              case 7:
               case "end":
                 return _context.stop();
             }
@@ -4236,8 +4483,39 @@ var WPBG_Provider = function WPBG_Provider(_ref) {
     setModeEdit(status);
   };
 
+  var onSave = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+      var result;
+      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              // console.log(resultData);
+              setLoading(true);
+              _context2.next = 3;
+              return (0,_api__WEBPACK_IMPORTED_MODULE_1__.save)(resultData, name_option);
+
+            case 3:
+              result = _context2.sent;
+              setLoading(false);
+              console.log(result);
+
+            case 6:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }));
+
+    return function onSave() {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+
   var value = {
     welcome: 'hi...!',
+    admin_logged_in: parseInt(PH_PHP.admin_logged_in),
     terms: terms,
     products: products,
     currentFilter: currentFilter,
@@ -4248,7 +4526,9 @@ var WPBG_Provider = function WPBG_Provider(_ref) {
     modeEdit: modeEdit,
     updateModeEdit: updateModeEdit,
     resultData: resultData,
-    setResultData: setResultData
+    setResultData: setResultData,
+    onSave: onSave,
+    loading: loading
   };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(WPBG_Context.Provider, {
     value: value,
@@ -4364,6 +4644,45 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./src/libs/useOuterClick.js":
+/*!***********************************!*\
+  !*** ./src/libs/useOuterClick.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ useOuterClick)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+function useOuterClick(callback) {
+  var callbackRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(); // initialize mutable ref, which stores callback
+
+  var innerRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(); // returned to client, who marks "border" element
+  // update cb on each render, so second useEffect has access to current value 
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    callbackRef.current = callback;
+  });
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    document.addEventListener("click", handleClick);
+    return function () {
+      return document.removeEventListener("click", handleClick);
+    };
+
+    function handleClick(e) {
+      if (innerRef.current && callbackRef.current && !innerRef.current.contains(e.target)) callbackRef.current(e);
+    }
+  }, []); // no dependencies -> stable click listener
+
+  return innerRef; // convenience for client (doesn't need to init ref himself) 
+}
+
+/***/ }),
+
 /***/ "./src/libs/water-pump-buying-guide.js":
 /*!*********************************************!*\
   !*** ./src/libs/water-pump-buying-guide.js ***!
@@ -4388,11 +4707,13 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function () {
   var elem = document.getElementById('WaterPumpBuyingGuide');
+  var name_option = elem.dataset.nameOption;
   var product_cats = elem.dataset.productCats;
   var root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_0__.createRoot)(elem);
   if (!root) return;
   root.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_context_WPBG_Context__WEBPACK_IMPORTED_MODULE_1__.WPBG_Provider, {
     product_cats: product_cats,
+    name_option: name_option,
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_components_WaterPumpBuyingGuide__WEBPACK_IMPORTED_MODULE_2__["default"], {})
   }));
 });

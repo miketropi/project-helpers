@@ -9,6 +9,7 @@ function PH_enqueue_scripts() {
 
   wp_localize_script('project-helpers-script', 'PH_PHP', [
     'ajax_url' => admin_url('admin-ajax.php'),
+    'admin_logged_in' => current_user_can('administrator'),
     'lang' => [],
   ]);
 }

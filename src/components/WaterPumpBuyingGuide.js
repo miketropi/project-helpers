@@ -24,7 +24,7 @@ export default () => {
   }
 
   return <div id="WaterPumpBuyingGuideContainer" className="water-pump-buying-guide-container">
-    { JSON.stringify(resultData) }
+    {/* { JSON.stringify(resultData) } */}
     <WaterPumpBuyingGuideContainerInner>
       <FilterBar terms={ terms } totalProduct={ products.length } defaultActive={ currentFilter } onChange={ onFilter } />
       <FilterResult />

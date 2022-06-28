@@ -6,6 +6,7 @@ const FilterBarContainer = styled.div`
   box-sizing: border-box;
   border-bottom: 1px solid #D2D9EC;
   background: #fafbfe;
+  border-radius: 4px 4px 0 0;
 
   .__radio-face-ui {
     display: inline-block;

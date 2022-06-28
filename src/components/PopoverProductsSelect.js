@@ -1,5 +1,6 @@
 import React, { useState, Fragment } from 'react';
 import styled from 'styled-components';
+import useOuterClick from '../libs/useOuterClick';
 
 const PopoverProductsSelectContainer = styled.div`
   display: inline-block;
@@ -47,11 +48,14 @@ const SelectContainer = styled.div`
 
 export default ({ children, products, onSelect }) => {
   const [show, setShow] = useState(false);
+  const innerRef = useOuterClick(ev => {
+    setShow(false);
+  });
 
   const updateShow = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    
+
     setShow(!show)
   }
 
@@ -60,7 +64,7 @@ export default ({ children, products, onSelect }) => {
     onSelect(value);
   }
 
-  return <PopoverProductsSelectContainer >
+  return <PopoverProductsSelectContainer ref={ innerRef }>
     <span onClick={ updateShow }>
       { children }
     </span>

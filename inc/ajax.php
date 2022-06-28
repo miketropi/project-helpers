@@ -11,6 +11,7 @@ function ph_ajax_get_products_water_pump_buying_guide() {
   
   wp_send_json([
     'success' => true,
+    'data' => get_option($data['nameOption']),
     'filter_terms' => $filter_terms,
     'products' => array_map(function($p) {
       $term =  get_the_terms($p->ID, 'product_cat');
@@ -31,3 +32,15 @@ function ph_ajax_get_products_water_pump_buying_guide() {
 
 add_action('wp_ajax_ph_ajax_get_products_water_pump_buying_guide', 'ph_ajax_get_products_water_pump_buying_guide');
 add_action('wp_ajax_nopriv_ph_ajax_get_products_water_pump_buying_guide', 'ph_ajax_get_products_water_pump_buying_guide');
+
+function ph_ajax_save_products_water_pump_buying_guide() {
+  $data = json_decode(file_get_contents("php://input"), true);
+  update_option($data['nameOption'], $data['data']);
+  
+  wp_send_json([
+    'success' => true,
+  ]);
+}
+
+add_action('wp_ajax_ph_ajax_save_products_water_pump_buying_guide', 'ph_ajax_save_products_water_pump_buying_guide');
+add_action('wp_ajax_nopriv_ph_ajax_save_products_water_pump_buying_guide', 'ph_ajax_save_products_water_pump_buying_guide');

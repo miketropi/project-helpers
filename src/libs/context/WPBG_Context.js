@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { get_products_water_pump_buying_guide } from '../api';
+import { get_products_water_pump_buying_guide, save } from '../api';
 import SECTION_BOARD_FLOW from '../data/unit-flow';
 import SECTION_BOARD_PRESSURE from '../data/unit-pressure';
 import { v4 as uuidv4 } from 'uuid';
@@ -37,7 +37,7 @@ const RESULT_BOARD_DATA_INIT = {
   },
 }
 
-const WPBG_Provider = ({ children, product_cats }) => {
+const WPBG_Provider = ({ children, product_cats, name_option }) => {
   const [modeEdit, setModeEdit] = useState('preview');
   const [terms, setTerms] = useState([])
   const [products, setProducts] = useState([]);
@@ -45,12 +45,17 @@ const WPBG_Provider = ({ children, product_cats }) => {
   const [board, setBoard] = useState(SECTION_BOARD_FLOW);
   const [unitActive, setUnitActive] = useState('flow');
   const [resultData, setResultData] = useState(RESULT_BOARD_DATA_INIT);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const _getProducts = async () => {
-      const { data } = await get_products_water_pump_buying_guide(product_cats.split(','));
+      const { data } = await get_products_water_pump_buying_guide(product_cats.split(','), name_option);
       setProducts([...data.products]);
       setTerms([...data.filter_terms]);
+
+      if( data.data ) {
+        setResultData(data.data) // 🍌🍌🍌
+      }
     }
 
     _getProducts();
@@ -76,15 +81,25 @@ const WPBG_Provider = ({ children, product_cats }) => {
     setModeEdit(status)
   }
 
+  const onSave = async () => {
+    // console.log(resultData);
+    setLoading(true);
+    const result = await save(resultData, name_option);
+    setLoading(false);
+    console.log(result)
+  }
+
   const value = {
     welcome: 'hi...!',
+    admin_logged_in: parseInt(PH_PHP.admin_logged_in),
     terms,
     products,
     currentFilter, updateFilter,
     board,
     unitActive, switchUnit,
     modeEdit, updateModeEdit, 
-    resultData, setResultData
+    resultData, setResultData,
+    onSave, loading
   }
 
   return <WPBG_Context.Provider value={ value }>

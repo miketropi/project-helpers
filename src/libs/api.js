@@ -9,8 +9,16 @@ export const request = async (action, data) => {
   });
 }
 
-export const get_products_water_pump_buying_guide = async (terms) => {
+export const get_products_water_pump_buying_guide = async (terms, nameOption) => {
   return await request('ph_ajax_get_products_water_pump_buying_guide', {
     terms,
+    nameOption
   })
 } 
+
+export const save = async (data, nameOption) => {
+  return await request('ph_ajax_save_products_water_pump_buying_guide', {
+    data,
+    nameOption
+  })
+}

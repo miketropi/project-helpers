@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import PopoverProductsSelect from './PopoverProductsSelect';
 import ActionsPerRow from './ActionsPerRow';
 import { useWPBG_Context } from '../libs/context/WPBG_Context';
 import { v4 as uuidv4 } from 'uuid';
+import PopoverProductConfig from './PopoverProductConfig';
 
 const ItemsContainer = styled.div`
   width: 100%;
@@ -11,8 +12,13 @@ const ItemsContainer = styled.div`
   .__edit {
     
     .row-inner {
+      padding: 10px 0;
       border: solid #eee;
       border-width: 1px 0;
+      background: -moz-linear-gradient(left,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.1) 49%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+      background: -webkit-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.1) 49%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(to right,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.1) 49%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */
     }
   }
 `;
@@ -22,7 +28,6 @@ const RowContainer = styled.div`
   margin-bottom: 10px;
 
   .row-inner {
-    padding: 10px 0;
     display: flex;
     position: relative;
   }
@@ -58,9 +63,20 @@ const ProductItemContainer = styled.div`
   align-items: center;
   padding: 4px 20px 4px 4px;
   border-radius: 100px;
-  background: white;
-  border: solid 1px #eee;
+  
   min-width: 170px;
+  margin-left: ${ props => props.space ? `${ props.space }px` : '0px' };
+  filter: ${ props => props.disableUI ? 'grayscale(1)' : 'none' };
+  opacity: ${ props => props.disableUI ? '.3' : '1' };
+  transition: opacity .3s ease;
+
+  ${ props => props.filterActive ? `
+  background: #F1F5FF;
+  border: 1px solid #195ff5;
+  ` : `
+  background: white;
+  border: solid 1px #E9E9E9;
+  ` }
 
   .thumb {
     width: auto;
@@ -76,6 +92,7 @@ const ProductItemContainer = styled.div`
       font-weight: bold;
       margin-bottom: 4px;
       line-height: normal;
+      white-space: nowrap;
     }
 
     p {
@@ -83,16 +100,37 @@ const ProductItemContainer = styled.div`
       font-weight: normal;
       margin: 0;
       line-height: normal;
+      white-space: nowrap;
     }
   }
 `;
 
-const ProductItem = ({ product }) => {
-  const { unitActive } = useWPBG_Context();
+const AddItemAfterContainer = styled.div`
+  position: absolute;
+  right: 0;
+  top: -27px;
+  transform: translateX(50%);
+  opacity: .4;
+  z-index: 9;
+
+  &:hover {
+    opacity: 1;
+  }
+`
+
+const ProductItem = ({ product, space }) => {
+  const { unitActive, currentFilter } = useWPBG_Context();
   let unitText = unitActive == 'flow' ? `${ product.flow }L/min` : `${ product.pressure }kPa`;
   // let unitText = product.pressure
 
-  return <ProductItemContainer>
+  const findTerm = product.term.filter( t => {
+    return t.slug == currentFilter
+  } );
+
+  const disableUI = currentFilter == 'all' ? false : (findTerm.length > 0 ? false : true);
+  const filterActive = currentFilter == 'all' ? false : true;
+
+  return <ProductItemContainer space={ space } disableUI={ disableUI } filterActive={ filterActive }>
     <img className="thumb" src={ product.thumbnail } alt={ `#${ product.shortname }` } />
     <div className="__entry">
       <h4>{ product.shortname }</h4>
@@ -105,10 +143,15 @@ export default ({ data, onChange, mode, products }) => {
   const { unitActive } = useWPBG_Context();
   const [_data, set_Data] = useState(data);
 
+  useEffect(() => {
+    set_Data({ ...data })
+  }, [data])
+
   const onAdd = (ID, rowIndex, pos) => {
     let newData = { ..._data };
     let find = products.find( p => p.ID == ID );
     newData[unitActive][rowIndex].items.splice(pos, 0, {
+      _id: uuidv4(),
       product: { ...find },
       space: 0,
     });
@@ -119,14 +162,13 @@ export default ({ data, onChange, mode, products }) => {
 
   const onAddRow = (rowIndex) => {
     let newData = { ..._data };
-    console.log(newData, rowIndex)
-    // newData[unitActive].splice(rowIndex + 1, 0, {
-    //   _id: uuidv4(),
-    //   items: []
-    // })
+    newData[unitActive].splice(rowIndex + 1, 0, {
+      _id: uuidv4(),
+      items: []
+    })
 
-    // set_Data(newData);
-    // onChange(newData);
+    set_Data(newData);
+    onChange(newData);
   }
 
   const onRemoveRow = (rowIndex) => {
@@ -140,12 +182,30 @@ export default ({ data, onChange, mode, products }) => {
     onChange(newData);
   }
 
+  const onUpdateItemProduct = (values, _rowIndex, _itemIndex) => {
+    let newData = { ..._data };
+    newData[unitActive][_rowIndex].items[_itemIndex] = values;
+
+    set_Data(newData);
+    onChange(newData);
+  }
+
+  const onRemoveItemProduct = (_rowIndex, _itemIndex) => {
+    let r = confirm(`Are you sure you want to remove this item?`);
+    if(r != true) return;
+
+    let newData = { ..._data };
+    newData[unitActive][_rowIndex].items.splice(_itemIndex, 1);
+
+    set_Data(newData);
+    onChange(newData);
+  }
+
   return <ItemsContainer>
+    {/* { JSON.stringify(_data[unitActive]) } */}
     <div className={ ['items-conatiner__inner', mode == 'edit' ? '__edit' : '__preview'].join(' ') }>
-      { JSON.stringify(_data) }
-      { unitActive }
       {
-        _data[unitActive].map((row, _index) => {
+        _data[unitActive].map((row, _rowIndex) => {
           const { _id, items } = row;
           return <RowContainer key={ _id }>
             <div className="row-inner">
@@ -155,7 +215,7 @@ export default ({ data, onChange, mode, products }) => {
                   <PopoverProductsSelect 
                     products={ products } 
                     onSelect={ value => {
-                      onAdd(value, _index, 0);
+                      onAdd(value, _rowIndex, 0);
                     } } >
                     <ButtonAdd>+</ButtonAdd>
                   </PopoverProductsSelect>
@@ -165,9 +225,36 @@ export default ({ data, onChange, mode, products }) => {
               {
                 // JSON.stringify(items)
                 items.length > 0 &&
-                items.map(item => {
-                  const { product, space } = item;
-                  return <ProductItem product={ product } space={ space } key={ product.ID } />
+                items.map((item, _productIndex) => {
+                  const { product, space, _id } = item;
+                  return (mode == 'edit' 
+                    ? <PopoverProductConfig 
+                      key={ `config_${ _id }` } 
+                      data={ item }
+                      onChange={ value => {
+                        onUpdateItemProduct(value, _rowIndex, _productIndex);
+                      } } 
+                      onRemove={ () => {
+                        onRemoveItemProduct(_rowIndex, _productIndex)
+                      } }
+                      extra={ <AddItemAfterContainer>
+                        <PopoverProductsSelect 
+                          products={ products } 
+                          onSelect={ value => {
+                            onAdd(value, _rowIndex, _productIndex + 1);
+                          } } >
+                          <ButtonAdd>+</ButtonAdd>
+                        </PopoverProductsSelect>
+                      </AddItemAfterContainer> }>
+                        <ProductItem 
+                          product={ product } 
+                          space={ space } 
+                          key={ _id } />
+                      </PopoverProductConfig> 
+                    : <ProductItem 
+                      product={ product } 
+                      space={ space } 
+                      key={ _id } />)
                 })
               }
 
@@ -179,13 +266,13 @@ export default ({ data, onChange, mode, products }) => {
                 mode == 'edit' &&
                 <div className="__actions">
                   {
-                    _index == 0 && 
-                    <ActionsPerRow onAdd={ e => { onAddRow(_index) } } />
+                    _rowIndex == 0 && 
+                    <ActionsPerRow onAdd={ e => { onAddRow(_rowIndex) } } />
                   }
 
                   {
-                    _index > 0 && 
-                    <ActionsPerRow onAdd={ e => { onAddRow(_index) } } onRemove={ e => { onRemoveRow(_index) } } />
+                    _rowIndex > 0 && 
+                    <ActionsPerRow onAdd={ e => { onAddRow(_rowIndex) } } onRemove={ e => { onRemoveRow(_rowIndex) } } />
                   }
                 </div>
               }
