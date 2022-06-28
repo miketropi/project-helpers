@@ -78,6 +78,12 @@ const ProductItemContainer = styled.div`
   border: solid 1px #E9E9E9;
   ` }
 
+  ${ props => props.productRemoved ? `
+  background: #e5e5e5;
+  filter: grayscale(1);
+  opacity: .5;
+  ` : `` }
+
   .thumb {
     width: auto;
     height: 48px;
@@ -119,21 +125,25 @@ const AddItemAfterContainer = styled.div`
 `
 
 const ProductItem = ({ product, space }) => {
-  const { unitActive, currentFilter } = useWPBG_Context();
-  let unitText = unitActive == 'flow' ? `${ product.flow }L/min` : `${ product.pressure }kPa`;
-  // let unitText = product.pressure
+  const { unitActive, currentFilter, products } = useWPBG_Context();
 
-  const findTerm = product.term.filter( t => {
+  let findProduct = products.find(p => p.ID == product.ID);
+  let _p = findProduct ? findProduct : product;
+  let unitText = unitActive == 'flow' ? `${ _p.flow } L/min` : `${ _p.pressure } kPa`;
+
+  const findTerm = _p.term.filter( t => {
     return t.slug == currentFilter
   } );
+
+  const productRemoved = findProduct ? false : true;
 
   const disableUI = currentFilter == 'all' ? false : (findTerm.length > 0 ? false : true);
   const filterActive = currentFilter == 'all' ? false : true;
 
-  return <ProductItemContainer space={ space } disableUI={ disableUI } filterActive={ filterActive }>
-    <img className="thumb" src={ product.thumbnail } alt={ `#${ product.shortname }` } />
+  return <ProductItemContainer space={ space } disableUI={ disableUI } filterActive={ filterActive } productRemoved={ productRemoved }>
+    <img className="thumb" src={ _p.thumbnail } alt={ `#${ _p.shortname }` } />
     <div className="__entry">
-      <h4>{ product.shortname }</h4>
+      <h4>{ _p.shortname } { productRemoved ? `[remove]` : '' }</h4>
       <p>{ unitText }</p>
     </div>
   </ProductItemContainer>

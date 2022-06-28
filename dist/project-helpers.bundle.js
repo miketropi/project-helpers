@@ -3579,7 +3579,7 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 var ItemsContainer = styled_components__WEBPACK_IMPORTED_MODULE_6__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  width: 100%;\n\n  .__edit {\n    \n    .row-inner {\n      padding: 10px 0;\n      border: solid #eee;\n      border-width: 1px 0;\n      background: -moz-linear-gradient(left,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.1) 49%, rgba(0,0,0,0) 100%); /* FF3.6-15 */\n      background: -webkit-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.1) 49%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */\n      background: linear-gradient(to right,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.1) 49%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */\n      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */\n    }\n  }\n"])));
 var RowContainer = styled_components__WEBPACK_IMPORTED_MODULE_6__["default"].div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  width: 100%;\n  margin-bottom: 10px;\n\n  .row-inner {\n    display: flex;\n    position: relative;\n  }\n\n  .__actions {\n    display: none;\n  }\n\n  &:hover {\n\n    .__actions {\n      display: block;\n    }\n  }\n"])));
 var ButtonAdd = styled_components__WEBPACK_IMPORTED_MODULE_6__["default"].button(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n  font-size: 13px;\n  border-radius: 2px;\n  width: 24px;\n  height: 24px;\n  min-width: auto;\n  padding: 0;\n  margin: 0;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  line-height: 0;\n"])));
-var ProductItemContainer = styled_components__WEBPACK_IMPORTED_MODULE_6__["default"].div(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n  display: flex;\n  align-items: center;\n  padding: 4px 20px 4px 4px;\n  border-radius: 100px;\n  \n  min-width: 170px;\n  margin-left: ", ";\n  filter: ", ";\n  opacity: ", ";\n  transition: opacity .3s ease;\n\n  ", "\n\n  .thumb {\n    width: auto;\n    height: 48px;\n    border-radius: 48px;\n    margin-right: 8px;\n  }\n\n  .__entry {\n\n    h4 {\n      font-size: 14px;\n      font-weight: bold;\n      margin-bottom: 4px;\n      line-height: normal;\n      white-space: nowrap;\n    }\n\n    p {\n      font-size: 12px;\n      font-weight: normal;\n      margin: 0;\n      line-height: normal;\n      white-space: nowrap;\n    }\n  }\n"])), function (props) {
+var ProductItemContainer = styled_components__WEBPACK_IMPORTED_MODULE_6__["default"].div(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n  display: flex;\n  align-items: center;\n  padding: 4px 20px 4px 4px;\n  border-radius: 100px;\n  \n  min-width: 170px;\n  margin-left: ", ";\n  filter: ", ";\n  opacity: ", ";\n  transition: opacity .3s ease;\n\n  ", "\n\n  ", "\n\n  .thumb {\n    width: auto;\n    height: 48px;\n    border-radius: 48px;\n    margin-right: 8px;\n  }\n\n  .__entry {\n\n    h4 {\n      font-size: 14px;\n      font-weight: bold;\n      margin-bottom: 4px;\n      line-height: normal;\n      white-space: nowrap;\n    }\n\n    p {\n      font-size: 12px;\n      font-weight: normal;\n      margin: 0;\n      line-height: normal;\n      white-space: nowrap;\n    }\n  }\n"])), function (props) {
   return props.space ? "".concat(props.space, "px") : '0px';
 }, function (props) {
   return props.disableUI ? 'grayscale(1)' : 'none';
@@ -3587,6 +3587,8 @@ var ProductItemContainer = styled_components__WEBPACK_IMPORTED_MODULE_6__["defau
   return props.disableUI ? '.3' : '1';
 }, function (props) {
   return props.filterActive ? "\n  background: #F1F5FF;\n  border: 1px solid #195ff5;\n  " : "\n  background: white;\n  border: solid 1px #E9E9E9;\n  ";
+}, function (props) {
+  return props.productRemoved ? "\n  background: #e5e5e5;\n  filter: grayscale(1);\n  opacity: .5;\n  " : "";
 });
 var AddItemAfterContainer = styled_components__WEBPACK_IMPORTED_MODULE_6__["default"].div(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n  position: absolute;\n  right: 0;\n  top: -27px;\n  transform: translateX(50%);\n  opacity: .4;\n  z-index: 9;\n\n  &:hover {\n    opacity: 1;\n  }\n"])));
 
@@ -3596,27 +3598,37 @@ var ProductItem = function ProductItem(_ref) {
 
   var _useWPBG_Context = (0,_libs_context_WPBG_Context__WEBPACK_IMPORTED_MODULE_3__.useWPBG_Context)(),
       unitActive = _useWPBG_Context.unitActive,
-      currentFilter = _useWPBG_Context.currentFilter;
+      currentFilter = _useWPBG_Context.currentFilter,
+      products = _useWPBG_Context.products;
 
-  var unitText = unitActive == 'flow' ? "".concat(product.flow, "L/min") : "".concat(product.pressure, "kPa"); // let unitText = product.pressure
+  var findProduct = products.find(function (p) {
+    return p.ID == product.ID;
+  });
 
-  var findTerm = product.term.filter(function (t) {
+  var _p = findProduct ? findProduct : product;
+
+  var unitText = unitActive == 'flow' ? "".concat(_p.flow, " L/min") : "".concat(_p.pressure, " kPa");
+
+  var findTerm = _p.term.filter(function (t) {
     return t.slug == currentFilter;
   });
+
+  var productRemoved = findProduct ? false : true;
   var disableUI = currentFilter == 'all' ? false : findTerm.length > 0 ? false : true;
   var filterActive = currentFilter == 'all' ? false : true;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(ProductItemContainer, {
     space: space,
     disableUI: disableUI,
     filterActive: filterActive,
+    productRemoved: productRemoved,
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
       className: "thumb",
-      src: product.thumbnail,
-      alt: "#".concat(product.shortname)
+      src: _p.thumbnail,
+      alt: "#".concat(_p.shortname)
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
       className: "__entry",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h4", {
-        children: product.shortname
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("h4", {
+        children: [_p.shortname, " ", productRemoved ? "[remove]" : '']
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
         children: unitText
       })]
@@ -3907,9 +3919,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _libs_useOuterClick__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../libs/useOuterClick */ "./src/libs/useOuterClick.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _libs_context_WPBG_Context__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../libs/context/WPBG_Context */ "./src/libs/context/WPBG_Context.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 var _templateObject, _templateObject2;
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -3931,14 +3944,18 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 
-var PopoverProductsSelectContainer = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  display: inline-block;\n  position: relative;\n"])));
-var SelectContainer = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  background: white;\n  border-radius: 3px;\n  overflow: hidden;\n  position: absolute;\n  z-index: 9;\n  top: calc(100% + 5px);\n  min-width: 180px;\n  z-index: 9;\n  border: solid 1px #eee;\n  box-shadown: 3px 3px 4px -1px rgb(1 1 1 / 5%);\n  display: ", ";\n\n  ul {\n    margin: 0;\n    padding: 0;\n    max-height: 300px;\n    overflow: auto;\n\n    li {\n      list-style: none;\n      padding: 6px 10px;\n      font-size: 11px;\n      font-weight: 600;\n      line-height: 1.5em;\n      cursor: pointer;\n\n      &:hover {\n        background: #1d68f5;\n        color: white;\n      }\n\n      &:not(:last-child) {\n        border-bottom: 1px solid #eee;\n      }\n    }\n  }\n"])), function (props) {
+
+var PopoverProductsSelectContainer = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  display: inline-block;\n  position: relative;\n"])));
+var SelectContainer = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  background: white;\n  border-radius: 3px;\n  overflow: hidden;\n  position: absolute;\n  z-index: 9;\n  top: calc(100% + 5px);\n  min-width: 300px;\n  z-index: 9;\n  border: solid 1px #eee;\n  box-shadown: 3px 3px 4px -1px rgb(1 1 1 / 5%);\n  display: ", ";\n\n  small {\n    display: inline-block;\n    line-height: normal;\n    padding: 4px 5px;\n    border: solid 1px #1d68f5;\n    border-radius: 3px;\n    background: white;\n    color: black !important;\n  }\n\n  ul {\n    margin: 0;\n    padding: 0;\n    max-height: 235px;\n    overflow: auto;\n\n    li {\n      list-style: none;\n      padding: 6px 10px;\n      font-size: 11px;\n      font-weight: 600;\n      line-height: 1.5em;\n      cursor: pointer;\n      display: flex;\n      align-items: center;\n      justify-content: space-between;\n\n      &:hover {\n        background: #1d68f5;\n        color: white;\n      }\n\n      &:not(:last-child) {\n        border-bottom: 1px solid #eee;\n      }\n    }\n  }\n"])), function (props) {
   return props.status == true ? 'block' : 'none';
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function (_ref) {
   var children = _ref.children,
       products = _ref.products,
       onSelect = _ref.onSelect;
+
+  var _useWPBG_Context = (0,_libs_context_WPBG_Context__WEBPACK_IMPORTED_MODULE_2__.useWPBG_Context)(),
+      unitActive = _useWPBG_Context.unitActive;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
@@ -3960,20 +3977,22 @@ var SelectContainer = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].
     onSelect(value);
   };
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(PopoverProductsSelectContainer, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(PopoverProductsSelectContainer, {
     ref: innerRef,
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
       onClick: updateShow,
       children: children
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(SelectContainer, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(SelectContainer, {
       status: show,
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("ul", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("ul", {
         children: products.length > 0 && products.map(function (p) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("li", {
             onClick: function onClick(e) {
               _onSelect(p.ID);
             },
-            children: [p.shortname, " (#", p.ID, ")"]
+            children: [p.shortname, " (#", p.ID, ")", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("small", {
+              children: unitActive == 'flow' ? "".concat(p.flow, " L/min") : "".concat(p.pressure, " kPa")
+            })]
           }, p.ID);
         })
       })
