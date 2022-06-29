@@ -65,7 +65,8 @@ const ProductItemContainer = styled.div`
   border-radius: 100px;
   
   min-width: 170px;
-  margin-left: ${ props => props.space ? `${ props.space }px` : '0px' };
+  // margin-left: ${ props => props.space ? `${ props.space }px` : '0px' };
+  transform: translateX(${ props => props.space ? `${ props.space }px` : '0px' });
   filter: ${ props => props.disableUI ? 'grayscale(1)' : 'none' };
   opacity: ${ props => props.disableUI ? '.3' : '1' };
   transition: opacity .3s ease;
@@ -125,7 +126,7 @@ const AddItemAfterContainer = styled.div`
 `
 
 const ProductItem = ({ product, space }) => {
-  const { unitActive, currentFilter, products } = useWPBG_Context();
+  const { unitActive, currentFilter, products, modeEdit } = useWPBG_Context();
 
   let findProduct = products.find(p => p.ID == product.ID);
   let _p = findProduct ? findProduct : product;
@@ -140,7 +141,7 @@ const ProductItem = ({ product, space }) => {
   const disableUI = currentFilter == 'all' ? false : (findTerm.length > 0 ? false : true);
   const filterActive = currentFilter == 'all' ? false : true;
 
-  return <ProductItemContainer space={ space } disableUI={ disableUI } filterActive={ filterActive } productRemoved={ productRemoved }>
+  return <ProductItemContainer space={ modeEdit == 'edit' ? 0 : space } disableUI={ disableUI } filterActive={ filterActive } productRemoved={ productRemoved }>
     <img className="thumb" src={ _p.thumbnail } alt={ `#${ _p.shortname }` } />
     <div className="__entry">
       <h4>{ _p.shortname } { productRemoved ? `[remove]` : '' }</h4>
@@ -240,6 +241,7 @@ export default ({ data, onChange, mode, products }) => {
                   return (mode == 'edit' 
                     ? <PopoverProductConfig 
                       key={ `config_${ _id }` } 
+                      space__={ space }
                       data={ item }
                       onChange={ value => {
                         onUpdateItemProduct(value, _rowIndex, _productIndex);

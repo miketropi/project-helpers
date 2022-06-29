@@ -19,6 +19,7 @@ const BoardContainer = styled.div`
     font-weight: 600;
     letter-spacing: 1px;
     transition: .3s ease;
+    z-index: 20;
   }
 
   .top-board-label {
@@ -101,21 +102,34 @@ const BoardLineColor = styled.div`
 const ResultSummaryContainer = styled.div`
   position: relative;
   z-index: 4;
+  ${ props => props.isLimitScreen ? `
+  overflow: auto;
+  ` : `` }
+
+  .result-summary-container__inner {
+    width: 1278px; 
+    min-width: 1278px; 
+    position: relative;
+  }
 `;
 
 const FlowItemsContainer = styled.div`
   padding: 82px 0 10px;
+  position: relative;
+  z-index: 20;
 `;
 
 const PressureItemsContainer = styled.div`
   padding: 5px 0 20px;
+  position: relative;
+  z-index: 19;
 `
 
 export default () => {
-  const { board, unitActive, resultData, setResultData, modeEdit, products } = useWPBG_Context();
+  const { board, unitActive, resultData, setResultData, modeEdit, products, isLimitScreen } = useWPBG_Context();
 
   const onUpdateResultData = (data, type) => {
-    let newResultData = {...resultData};
+    let newResultData = { ...resultData };
     newResultData[type] = data;
 
     setResultData(newResultData);
@@ -124,41 +138,44 @@ export default () => {
   return <BoardContainer boarsItem={ board.length }>
     <div className="top-board-label">Dirty Water</div>
     
-    <ResultSummaryContainer>
-      <FlowItemsContainer>
-        <Items 
-          data={ resultData.dirty_water } 
-          mode={ modeEdit } 
-          onChange={ values => {
-            onUpdateResultData(values, 'dirty_water');
-          } } 
-          products={ products.filter(p => p.type == 'dirty water') } />
-      </FlowItemsContainer>
-      <BoardLineColor>
-        <span className="__start-label">Low { unitActive }</span>
-        <span className="__end-label">Hight { unitActive }</span>
-        <UnitBar />
-      </BoardLineColor>
-      <PressureItemsContainer>
-        <Items 
-          data={ resultData.clean_water } 
-          mode={ modeEdit } 
-          onChange={ values => {
-            onUpdateResultData(values, 'clean_water');
-          } } 
-          products={ products.filter(p => p.type == 'clean water') } />
-      </PressureItemsContainer>
+    <ResultSummaryContainer mode={ modeEdit } isLimitScreen={ isLimitScreen }>
+      <div className="result-summary-container__inner">
+        <FlowItemsContainer>
+          <Items 
+            data={ resultData.dirty_water } 
+            mode={ modeEdit } 
+            onChange={ values => {
+              onUpdateResultData(values, 'dirty_water');
+            } } 
+            products={ products.filter(p => p.type == 'dirty water') } />
+        </FlowItemsContainer>
+        <BoardLineColor>
+          <span className="__start-label">Low { unitActive }</span>
+          <span className="__end-label">Hight { unitActive }</span>
+          <UnitBar />
+        </BoardLineColor>
+        <PressureItemsContainer>
+          <Items 
+            data={ resultData.clean_water } 
+            mode={ modeEdit } 
+            onChange={ values => {
+              onUpdateResultData(values, 'clean_water');
+            } } 
+            products={ products.filter(p => p.type == 'clean water') } />
+        </PressureItemsContainer>
+
+        <div className="board-grid-background">
+          {
+            board.length > 0 &&
+            board.map((item, _index) => {
+              let style = item?.width ? { width: `${ item.width }` } : {};
+              return <div className="board__item" key={ _index } style={ style }></div>
+            })
+          }
+        </div>
+      </div>
     </ResultSummaryContainer>
-    
-    <div className="board-grid-background">
-    {
-      board.length > 0 &&
-      board.map((item, _index) => {
-        let style = item?.width ? { width: `${ item.width }` } : {};
-        return <div className="board__item" key={ _index } style={ style }></div>
-      })
-    }
-    </div>
+
     <div className="bottom-board-label">Dirty Water</div>
   </BoardContainer>
 }

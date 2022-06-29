@@ -3,6 +3,7 @@ import { get_products_water_pump_buying_guide, save } from '../api';
 import SECTION_BOARD_FLOW from '../data/unit-flow';
 import SECTION_BOARD_PRESSURE from '../data/unit-pressure';
 import { v4 as uuidv4 } from 'uuid';
+import { useMediaQuery } from 'react-responsive'
 
 const WPBG_Context = createContext();
 
@@ -92,6 +93,8 @@ const WPBG_Provider = ({ children, product_cats, name_option }) => {
   const value = {
     welcome: 'hi...!',
     admin_logged_in: parseInt(PH_PHP.admin_logged_in),
+    isLimitScreen: useMediaQuery({ query: '(max-width: 1376px)' }),
+    transformFilterScreen: useMediaQuery({ query: '(max-width: 1090px)' }),
     terms,
     products,
     currentFilter, updateFilter,

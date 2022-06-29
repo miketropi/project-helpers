@@ -10,6 +10,10 @@ const FilterResultContainer = styled.div`
 `;
 const FilterResultContainerInner = styled.div`
   padding: 0 48px;
+
+  @media(max-width: 1278px) {
+    padding: 0;
+  }
 `;
 
 const AdminTools = styled.div`

@@ -6,6 +6,10 @@ import { useWPBG_Context } from '../libs/context/WPBG_Context';
 const PopoverProductsSelectContainer = styled.div`
   display: inline-block;
   position: relative;
+
+  ${ props => props.show ? `
+  z-index: 9;
+  ` : `` }
 `;
 
 const SelectContainer = styled.div`
@@ -79,7 +83,7 @@ export default ({ children, products, onSelect }) => {
     onSelect(value);
   }
 
-  return <PopoverProductsSelectContainer ref={ innerRef }>
+  return <PopoverProductsSelectContainer ref={ innerRef } show={ show }>
     <span onClick={ updateShow }>
       { children }
     </span>

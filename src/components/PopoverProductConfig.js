@@ -4,6 +4,15 @@ import useOuterClick from '../libs/useOuterClick';
 
 const PopoverProductConfigContainer = styled.div`
   position: relative;
+  transform: translateX(${ props => props.space ? `${ props.space }px` : '0px' });
+
+  ${ props => props.show ? `
+  z-index: 9;
+  ` : `` }
+
+  &:hover {
+    z-index: 9;
+  }
 `;
 
 const ConfigContainer = styled.div`
@@ -20,6 +29,7 @@ const ConfigContainer = styled.div`
   font-size: 11px;
   font-weight: 600;
   box-shadow: 1px 1px 2px 1px rgb(1 1 1 / 5%);
+  transform: translateX(${ props => props.space ? `${ props.space }px` : '0px' });
 
   h4 {
     font-size: 11px;
@@ -50,7 +60,7 @@ const ConfigContainer = styled.div`
   }
 `;
 
-export default ({ data, children, onChange, onRemove, extra }) => {
+export default ({ data, children, onChange, onRemove, extra, space__ }) => {
   const [show, setShow] = useState(false);
   const [space, setSpace] = useState(data.space);
 
@@ -65,14 +75,14 @@ export default ({ data, children, onChange, onRemove, extra }) => {
     onChange(newData);
   }
 
-  return <PopoverProductConfigContainer ref={ innerRef }>
+  return <PopoverProductConfigContainer ref={ innerRef } space={ space__ } show={ show }>
     <div 
       onClick={ e => setShow(!show) } 
       style={{ cursor: 'pointer' }}>
       { children }
     </div>
     { extra }
-    <ConfigContainer show={ show }>
+    <ConfigContainer show={ show } space={ space__ * -1 } >
       <h4>{ data.product.shortname } (#{ data.product.ID })</h4>
       <fieldset>
         <legend>Left Space ({ space })</legend>

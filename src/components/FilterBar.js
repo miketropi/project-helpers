@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useWPBG_Context } from '../libs/context/WPBG_Context';
+import MobilePopup from './MobilePopup';
+import { RiArrowRightSLine } from 'react-icons/ri';
 
 const FilterBarContainer = styled.div`
   padding: 32px 48px;
@@ -11,6 +14,7 @@ const FilterBarContainer = styled.div`
   .__radio-face-ui {
     display: inline-block;
     width: 16px;
+    min-width: 16px;
     height: 16px;
     border-radius: 16px;
     border: 1px solid #CBCFD8;
@@ -81,43 +85,155 @@ const FilterBarContainer = styled.div`
   }
 `;
 
+const MobileFilterSelector = styled.div`
+
+`;
+
+const MobileFilterSelect = styled.ul`
+  margin: 0;
+  padding: 0;
+
+  li.filter-item {
+    list-style: none;
+    padding: 12px;
+    line-height: normal;
+    font-size: 16px;
+    color: #0F1729;
+    font-weight: 600;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    &.__active {
+      background: #f5f5f5;
+    }
+
+    &:not(:last-child) {
+      border-bottom: 1px solid #DBDBDB;
+    }
+
+    .__item-entry {
+      line-height: normal;
+
+      label {
+        display: block;
+        font-size: 14px;
+        color: #444444;
+      }
+
+      span {
+        font-size: 14px;
+        font-weight: 400;
+        color: #505050;
+      }
+    }
+
+    svg {
+      fill: #7C765A;
+      margin-right: 10px;
+      transform: scale(1.4);
+    }
+  }
+`;
+
 export default ({ terms, totalProduct, onChange, defaultActive }) => {
+  const { transformFilterScreen, currentFilter } = useWPBG_Context();
   const [active, setActive] = useState(defaultActive);
+  const [modalShow, setModalShow] = useState(false);
 
   const _onChange = (value) => {
-    setActive(value)
+    setActive(value);
+    onChange(value);
+  }
+
+  const _onChangeFilterMobi = (value) => {
+    setActive(value);
+    setModalShow(false);
     onChange(value);
   }
 
   return <FilterBarContainer>
-    <ul className="filter-list">
-      <li 
-        className={ ['filter-list__item', (active == 'all' ? '__active' : '')].join(' ') } 
-        key={ '_all_' } 
-        style={{ width: '8%' }} 
-        onClick={ e => _onChange('all') }>
-        <span className="__radio-face-ui"></span>
-        <div className="filter-list__entry">
-          <label>All</label>
-          <span>({ totalProduct })</span>
-        </div>
-      </li>
-      {
-        terms.length > 0 && 
-        terms.map(item => {
-          return <li 
-            className={ ['filter-list__item', (active == item.slug ? '__active' : '')].join(' ') } 
-            key={ item.term_id } 
-            style={{ width: '23%' }} 
-            onClick={ e => _onChange(item.slug) }>
-            <span className="__radio-face-ui"></span>
-            <div className="filter-list__entry">
-              <label>{ item.name }</label>
-              <span>{ item.subtitle }</span>
-            </div>
-          </li>
-        })
-      }
-    </ul>
+    {
+      transformFilterScreen == true &&
+      <div>
+        <MobileFilterSelector onClick={ e => setModalShow(!modalShow) }>
+          <span>
+            { currentFilter == 'all' 
+              ? 'All Products' 
+              : terms.find(t => t.slug == currentFilter).name }
+          </span>
+        </MobileFilterSelector>
+        <MobilePopup 
+          title={ 'Applications' } 
+          show={ modalShow }
+          onClose={ () => {
+            setModalShow(false);
+          } }>
+          <MobileFilterSelect>
+            <li 
+              className={ ['filter-item', (active == 'all' ? '__active' : '')].join(' ') } 
+              key="mobile_filter_all" 
+              onClick={ e => _onChangeFilterMobi('all') }>
+              <div className={ ['__item-entry'].join(' ') }>
+                <label>All Products</label>
+                <span>({ totalProduct })</span>
+              </div>
+              <RiArrowRightSLine />
+            </li>
+            {
+              terms.length > 0 && 
+              terms.map(item => {
+                return <li 
+                  className={ ['filter-item', (active == item.slug ? '__active' : '')].join(' ') } 
+                  key={ `mobile_filter_${ item.term_id }` }
+                  onClick={ e => _onChangeFilterMobi(item.slug) }>
+                  <div className="__item-entry">
+                    <label>{ item.name }</label>
+                    <span>{ item.subtitle }</span>
+                  </div>
+                  <RiArrowRightSLine />
+                </li>
+              })
+            }
+          </MobileFilterSelect>
+        </MobilePopup>
+      </div>
+    }
+
+    {
+      transformFilterScreen == false &&
+      <ul className="filter-list">
+        <li 
+          className={ ['filter-list__item', (active == 'all' ? '__active' : '')].join(' ') } 
+          key={ '_all_' } 
+          style={{ width: '8%' }} 
+          onClick={ e => _onChange('all') }>
+          <span className="__radio-face-ui"></span>
+          <div className="filter-list__entry">
+            <label>All</label>
+            <span>({ totalProduct })</span>
+          </div>
+        </li>
+        {
+          terms.length > 0 && 
+          terms.map(item => {
+            return <li 
+              className={ ['filter-list__item', (active == item.slug ? '__active' : '')].join(' ') } 
+              key={ item.term_id } 
+              style={{ width: '23%' }} 
+              onClick={ e => _onChange(item.slug) }>
+              <span className="__radio-face-ui"></span>
+              <div className="filter-list__entry">
+                <label>{ item.name }</label>
+                <span>{ item.subtitle }</span>
+              </div>
+            </li>
+          })
+        }
+      </ul>
+    }
+    
   </FilterBarContainer>
 }

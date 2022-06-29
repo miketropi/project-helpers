@@ -9,6 +9,7 @@ const SwitchBoardUnitContainer = styled.div`
   border-radius: 50px;
   border: 1px solid #DBDBDB; 
   z-index: 9;
+  background: white;
 
   button {
     width: 65px;
