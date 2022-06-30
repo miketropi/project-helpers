@@ -1,3 +1,4 @@
+import React, { useRef, useEffect, useState } from 'react';
 import { useWPBG_Context } from '../libs/context/WPBG_Context';
 import styled from 'styled-components';
 import UnitBar from './UnitBar';
@@ -38,7 +39,7 @@ const BoardContainer = styled.div`
   .__end-label {
     position: absolute;
     left: 0;
-    transform: translateY(-120%);
+    top: -30px;
     color: white;
     font-size: 13px;
     font-weight: 600;
@@ -109,6 +110,7 @@ const ResultSummaryContainer = styled.div`
   .result-summary-container__inner {
     width: 1278px; 
     min-width: 1278px; 
+    max-width: 1278px; 
     position: relative;
   }
 `;
@@ -117,6 +119,10 @@ const FlowItemsContainer = styled.div`
   padding: 82px 0 10px;
   position: relative;
   z-index: 20;
+
+  @media(max-width: 768px) {
+    padding-top: 42px;
+  }
 `;
 
 const PressureItemsContainer = styled.div`
@@ -126,7 +132,52 @@ const PressureItemsContainer = styled.div`
 `
 
 export default () => {
-  const { board, unitActive, resultData, setResultData, modeEdit, products, isLimitScreen } = useWPBG_Context();
+  const { 
+    board, 
+    unitActive, 
+    resultData, 
+    setResultData, 
+    modeEdit, 
+    products, 
+    isLimitScreen } = useWPBG_Context();
+  
+  const [scrollPos, setScrollPos] = useState(0);
+  const [labelPos, setLabelPos] = useState({});
+  const trackingScroll = useRef(null);
+  const innerScroll = useRef(null);
+
+  useEffect(() => {
+    trackingScroll.current.addEventListener('scroll', e => {
+      // console.log(trackingScroll.current.scrollLeft);
+      if(trackingScroll.current?.scrollLeft) {
+        setScrollPos(trackingScroll.current.scrollLeft)
+      }
+    })
+  }, [])
+
+  const calcPosLabelTags = (pos) => {
+    let wrapWidth = innerScroll.current.clientWidth;
+    return {
+      leftLabelPos: pos,
+      rightLabelPos: (wrapWidth - (trackingScroll.current.clientWidth + pos)) * -1,
+    }
+  }
+
+  useEffect(() => {
+    if(isLimitScreen == true) {
+      const pos = calcPosLabelTags(scrollPos);
+      setLabelPos({
+        ...labelPos,
+        ...pos
+      });
+    } else {
+      setLabelPos({
+        leftLabelPos: 0,
+        rightLabelPos: 0
+      })
+    }
+    
+  }, [scrollPos, isLimitScreen])
 
   const onUpdateResultData = (data, type) => {
     let newResultData = { ...resultData };
@@ -138,8 +189,8 @@ export default () => {
   return <BoardContainer boarsItem={ board.length }>
     <div className="top-board-label">Dirty Water</div>
     
-    <ResultSummaryContainer mode={ modeEdit } isLimitScreen={ isLimitScreen }>
-      <div className="result-summary-container__inner">
+    <ResultSummaryContainer ref={ trackingScroll } mode={ modeEdit } isLimitScreen={ isLimitScreen }>
+      <div className="result-summary-container__inner" ref={ innerScroll }>
         <FlowItemsContainer>
           <Items 
             data={ resultData.dirty_water } 
@@ -150,8 +201,8 @@ export default () => {
             products={ products.filter(p => p.type == 'dirty water') } />
         </FlowItemsContainer>
         <BoardLineColor>
-          <span className="__start-label">Low { unitActive }</span>
-          <span className="__end-label">Hight { unitActive }</span>
+          <span className="__start-label" style={{ transform: `translateX(${ labelPos?.leftLabelPos }px)` }}>Low { unitActive }</span>
+          <span className="__end-label" style={{ transform: `translateX(${ labelPos?.rightLabelPos }px)` }}>Hight { unitActive }</span>
           <UnitBar />
         </BoardLineColor>
         <PressureItemsContainer>

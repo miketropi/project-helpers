@@ -18,10 +18,16 @@ const MobilePopupContainerWrap = styled.div`
     display: flex;
     align-items: flex-end;
     justify-content: center;
+    transition: .3s ease;
 
     &.__show {
       visibility: visible;
       opacity: 1;
+
+      .mobile-popup__inner {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
 
     .mobile-popup__inner {
@@ -29,6 +35,9 @@ const MobilePopupContainerWrap = styled.div`
       background: white;
       border-radius: 8px;
       margin-bottom: 20px;
+      transform: translateY(30px);
+      opacity: 0;
+      transition: .4s ease;
 
       .mobile-popup__heading {
         padding: 16px 12px;

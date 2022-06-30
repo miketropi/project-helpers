@@ -27,6 +27,10 @@ const RowContainer = styled.div`
   width: 100%;
   margin-bottom: 10px;
 
+  @media(max-width: 768px) {
+    margin-bottom: 8px;
+  }
+
   .row-inner {
     display: flex;
     position: relative;
@@ -67,7 +71,8 @@ const ProductItemContainer = styled.div`
   min-width: 170px;
   // margin-left: ${ props => props.space ? `${ props.space }px` : '0px' };
   transform: translateX(${ props => props.space ? `${ props.space }px` : '0px' });
-  filter: ${ props => props.disableUI ? 'grayscale(1)' : 'none' };
+  filter: ${ props => props.disableUI ? `grayscale(1)` : `` };
+  // box-shadow: ${ props => (props.disableUI == true || props.filterActive == false) ? `none` : `0px 0px 8px rgb(70 115 210 / 50%), 0px 0px 0px 1px #0949d2` };
   opacity: ${ props => props.disableUI ? '.3' : '1' };
   transition: opacity .3s ease;
 
@@ -83,7 +88,9 @@ const ProductItemContainer = styled.div`
   background: #e5e5e5;
   filter: grayscale(1);
   opacity: .5;
-  ` : `` }
+  ` : `
+  
+  ` }
 
   .thumb {
     width: auto;
@@ -137,11 +144,14 @@ const ProductItem = ({ product, space }) => {
   } );
 
   const productRemoved = findProduct ? false : true;
-
   const disableUI = currentFilter == 'all' ? false : (findTerm.length > 0 ? false : true);
   const filterActive = currentFilter == 'all' ? false : true;
 
-  return <ProductItemContainer space={ modeEdit == 'edit' ? 0 : space } disableUI={ disableUI } filterActive={ filterActive } productRemoved={ productRemoved }>
+  return <ProductItemContainer 
+    space={ modeEdit == 'edit' ? 0 : space } 
+    disableUI={ disableUI } 
+    filterActive={ filterActive } 
+    productRemoved={ productRemoved }>
     <img className="thumb" src={ _p.thumbnail } alt={ `#${ _p.shortname }` } />
     <div className="__entry">
       <h4>{ _p.shortname } { productRemoved ? `[remove]` : '' }</h4>

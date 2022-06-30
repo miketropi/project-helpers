@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useWPBG_Context } from '../libs/context/WPBG_Context';
 import MobilePopup from './MobilePopup';
 import { RiArrowRightSLine } from 'react-icons/ri';
+import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
 
 const FilterBarContainer = styled.div`
   padding: 32px 48px;
@@ -10,6 +11,10 @@ const FilterBarContainer = styled.div`
   border-bottom: 1px solid #D2D9EC;
   background: #fafbfe;
   border-radius: 4px 4px 0 0;
+
+  @media(max-width: 768px) {
+    padding: 16px;
+  }
 
   .__radio-face-ui {
     display: inline-block;
@@ -86,7 +91,19 @@ const FilterBarContainer = styled.div`
 `;
 
 const MobileFilterSelector = styled.div`
-
+  width: 343px;
+  max-width: 100%;
+  background: white;
+  border: 1px solid #DBDBDB;
+  border-radius: 4px;
+  margin: 0 auto;
+  padding: 16px 12px;
+  color: #0F1729;
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 const MobileFilterSelect = styled.ul`
@@ -164,6 +181,7 @@ export default ({ terms, totalProduct, onChange, defaultActive }) => {
               ? 'All Products' 
               : terms.find(t => t.slug == currentFilter).name }
           </span>
+          <MdOutlineKeyboardArrowDown size="1.5em" color="#7C765A" />
         </MobileFilterSelector>
         <MobilePopup 
           title={ 'Applications' } 
