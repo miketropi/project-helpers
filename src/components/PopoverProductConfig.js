@@ -46,7 +46,8 @@ const ConfigContainer = styled.div`
     float: right;
     background: black;
     border: none;
-  }
+    color: white;
+  } 
 
   fieldset {
     padding: 4px 10px;
