@@ -5,7 +5,7 @@ import UnitBar from './UnitBar';
 import Items from './Items';
 
 const BoardContainer = styled.div`
-  position: relative;
+  position: relative; 
 
   .top-board-label,
   .bottom-board-label {
@@ -227,6 +227,6 @@ export default () => {
       </div>
     </ResultSummaryContainer>
 
-    <div className="bottom-board-label">Dirty Water</div>
+    <div className="bottom-board-label">Clean Water</div>
   </BoardContainer>
 }
