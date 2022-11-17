@@ -202,7 +202,7 @@ export default () => {
         </FlowItemsContainer>
         <BoardLineColor>
           <span className="__start-label" style={{ transform: `translateX(${ labelPos?.leftLabelPos }px)` }}>Low { unitActive }</span>
-          <span className="__end-label" style={{ transform: `translateX(${ labelPos?.rightLabelPos }px)` }}>Hight { unitActive }</span>
+          <span className="__end-label" style={{ transform: `translateX(${ labelPos?.rightLabelPos }px)` }}>High { unitActive }</span>
           <UnitBar />
         </BoardLineColor>
         <PressureItemsContainer>
