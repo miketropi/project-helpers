@@ -63,9 +63,9 @@ const ButtonAdd = styled.button`
 `
 
 const ProductItemContainer = styled.div`
-  display: flex;
+  /* display: flex;
   align-items: center;
-  padding: 4px 20px 4px 4px;
+  padding: 4px 20px 4px 4px; */
   border-radius: 100px;
   
   min-width: 170px;
@@ -91,7 +91,11 @@ const ProductItemContainer = styled.div`
   ` : `
   
   ` }
-
+  a{
+    display: flex;
+    align-items: center;
+    padding: 4px 20px 4px 4px;
+  }
   .thumb {
     width: auto;
     height: 48px;
@@ -115,6 +119,7 @@ const ProductItemContainer = styled.div`
       margin: 0;
       line-height: normal;
       white-space: nowrap;
+      color: #3a3a3a;
     }
   }
 `;
@@ -137,6 +142,7 @@ const ProductItem = ({ product, space }) => {
 
   let findProduct = products.find(p => p.ID == product.ID);
   let _p = findProduct ? findProduct : product;
+  
   let unitText = unitActive == 'flow' ? `${ _p.flow } L/min` : `${ _p.pressure } kPa`;
 
   const findTerm = _p.term.filter( t => {
@@ -147,16 +153,27 @@ const ProductItem = ({ product, space }) => {
   const disableUI = currentFilter == 'all' ? false : (findTerm.length > 0 ? false : true);
   const filterActive = currentFilter == 'all' ? false : true;
 
+  const clickToRedirect = function(e, url) {
+    e.preventDefault();
+    if(modeEdit != 'edit') {
+      window.location.href = url;
+    }
+  }
+
   return <ProductItemContainer 
     space={ modeEdit == 'edit' ? 0 : space } 
     disableUI={ disableUI } 
     filterActive={ filterActive } 
     productRemoved={ productRemoved }>
-    <img className="thumb" src={ _p.thumbnail } alt={ `#${ _p.shortname }` } />
-    <div className="__entry">
-      <h4>{ _p.shortname } { productRemoved ? `[remove]` : '' }</h4>
-      <p>{ unitText }</p>
-    </div>
+
+    <a href={ _p.link_product } onClick={ (e) => { clickToRedirect(e,  _p.link_product ) } }>
+      <img className="thumb" src={ _p.thumbnail } alt={ `#${ _p.shortname }` } />
+      <div className="__entry">
+        <h4>{ _p.shortname } { productRemoved ? `[remove]` : '' }</h4>
+        <p>{ unitText }</p>
+      </div>
+    </a>
+
   </ProductItemContainer>
 }
 

@@ -1,14 +1,14 @@
-<?php 
+<?php
 /**
  * Ajax
- * 
+ *
  */
 
 function ph_ajax_get_products_water_pump_buying_guide() {
   $data = json_decode(file_get_contents("php://input"), true);
   $products = ph_get_products_by_terms($data['terms']);
   $filter_terms = ph_get_product_terms_data_filter($data['terms']);
-  
+
   wp_send_json([
     'success' => true,
     'data' => get_option($data['nameOption']),
@@ -18,6 +18,7 @@ function ph_ajax_get_products_water_pump_buying_guide() {
       return [
         'ID' => $p->ID,
         'title' => $p->post_title,
+        'link_product' => get_the_permalink($p->ID),
         'thumbnail' => get_the_post_thumbnail_url($p->ID),
         'buying_guide_enable' => get_field('buying_guide_enable', $p->ID),
         'shortname' => get_field('short_name_prd', $p->ID),
@@ -26,7 +27,7 @@ function ph_ajax_get_products_water_pump_buying_guide() {
         'type' => get_field('type_water_prd', $p->ID),
         'term' => $term,
       ];
-    }, $products) 
+    }, $products)
   ]);
 }
 
@@ -36,7 +37,7 @@ add_action('wp_ajax_nopriv_ph_ajax_get_products_water_pump_buying_guide', 'ph_aj
 function ph_ajax_save_products_water_pump_buying_guide() {
   $data = json_decode(file_get_contents("php://input"), true);
   update_option($data['nameOption'], $data['data']);
-  
+
   wp_send_json([
     'success' => true,
   ]);

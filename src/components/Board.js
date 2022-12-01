@@ -25,13 +25,13 @@ const BoardContainer = styled.div`
 
   .top-board-label {
     top: 0;
-    background: #714228;
+    background: #8FA9E3;
     border-radius: 0 0 4px 4px;
   }
 
   .bottom-board-label {
     bottom: 0;
-    background: #8FA9E3;
+    background: #714228;
     border-radius: 4px 4px 0 0;
   }
 
@@ -116,7 +116,7 @@ const ResultSummaryContainer = styled.div`
 `;
 
 const FlowItemsContainer = styled.div`
-  padding: 82px 0 10px;
+  padding: 5px 0 20px;
   position: relative;
   z-index: 20;
 
@@ -126,7 +126,7 @@ const FlowItemsContainer = styled.div`
 `;
 
 const PressureItemsContainer = styled.div`
-  padding: 5px 0 20px;
+  padding: 82px 0 10px;
   position: relative;
   z-index: 19;
 `
@@ -187,24 +187,10 @@ export default () => {
   }
 
   return <BoardContainer boarsItem={ board.length }>
-    <div className="top-board-label">Dirty Water</div>
+    <div className="top-board-label">Clean Water</div>
     
     <ResultSummaryContainer ref={ trackingScroll } mode={ modeEdit } isLimitScreen={ isLimitScreen }>
       <div className="result-summary-container__inner" ref={ innerScroll }>
-        <FlowItemsContainer>
-          <Items 
-            data={ resultData.dirty_water } 
-            mode={ modeEdit } 
-            onChange={ values => {
-              onUpdateResultData(values, 'dirty_water');
-            } } 
-            products={ products.filter(p => p.type == 'dirty water') } />
-        </FlowItemsContainer>
-        <BoardLineColor>
-          <span className="__start-label" style={{ transform: `translateX(${ labelPos?.leftLabelPos }px)` }}>Low { unitActive }</span>
-          <span className="__end-label" style={{ transform: `translateX(${ labelPos?.rightLabelPos }px)` }}>High { unitActive }</span>
-          <UnitBar />
-        </BoardLineColor>
         <PressureItemsContainer>
           <Items 
             data={ resultData.clean_water } 
@@ -214,6 +200,20 @@ export default () => {
             } } 
             products={ products.filter(p => p.type == 'clean water') } />
         </PressureItemsContainer>
+        <BoardLineColor>
+          <span className="__start-label" style={{ transform: `translateX(${ labelPos?.leftLabelPos }px)` }}>Low { unitActive }</span>
+          <span className="__end-label" style={{ transform: `translateX(${ labelPos?.rightLabelPos }px)` }}>High { unitActive }</span>
+          <UnitBar />
+        </BoardLineColor>
+        <FlowItemsContainer>
+          <Items 
+            data={ resultData.dirty_water } 
+            mode={ modeEdit } 
+            onChange={ values => {
+              onUpdateResultData(values, 'dirty_water');
+            } } 
+            products={ products.filter(p => p.type == 'dirty water') } />
+        </FlowItemsContainer>
 
         <div className="board-grid-background">
           {
@@ -227,6 +227,6 @@ export default () => {
       </div>
     </ResultSummaryContainer>
 
-    <div className="bottom-board-label">Clean Water</div>
+    <div className="bottom-board-label">Dirty Water</div>
   </BoardContainer>
 }
